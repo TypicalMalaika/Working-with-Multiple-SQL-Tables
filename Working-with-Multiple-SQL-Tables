@@ -1,0 +1,36 @@
+/*Creates log of riders*/
+SELECT * 
+FROM trips
+LEFT JOIN riders
+  ON trips.rider_id = riders.id;
+
+/*Cars used during trips*/
+SELECT *
+FROM trips
+JOIN cars
+  ON trips.car_id = cars.id;
+
+/*Stack new rider data on top of existing rider data*/
+SELECT * FROM riders
+UNION
+SELECT * FROM riders2;
+
+/*Average cost of a trip*/
+SELECT AVG(cost)
+from trips;
+
+/*All riders who hav eused REBU less than 500 times*/
+SELECT *
+FROM riders
+WHERE total_trips < 500;
+
+/*Number of cars that are active*/
+SELECT COUNT(*)
+FROM cars
+WHERE status = "active";
+
+/*Two cars with the highest trips_completed*/
+SELECT *
+FROM cars
+ORDER BY trips_completed DESC
+LIMIT 2;
